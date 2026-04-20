@@ -1,76 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
 
-/* Reset de FlexyScore para quitar el fondo blanco */
-body, html {
-    background: transparent !important;
-}
+/* Reset para eliminar el blanco de FlexyScore */
+body, html { background: transparent !important; }
 
-/* CONTENEDOR PRINCIPAL - Estilo Padres de San Diego */
+/* CONTENEDOR PRINCIPAL - Negro con transparencia y bordes redondeados */
 .containerbaseball {
-    background: rgba(15, 15, 15, 0.85) !important; /* Negro transparente */
-    backdrop-filter: blur(8px);
-    border-radius: 12px;
+    background: rgba(10, 10, 10, 0.85) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
     padding: 15px;
     width: 380px;
     font-family: 'Oswald', sans-serif;
     color: white !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
-/* NOMBRES DE EQUIPOS */
+/* EQUIPOS - Uno debajo de otro */
 .boxteams {
-    width: 65%;
+    width: 70%;
     font-size: 18px;
     text-transform: uppercase;
-    padding: 5px 0;
-    font-weight: 700;
-    color: white !important;
-    border-left: 4px solid #D32F2F; /* Rojo Toros */
-    padding-left: 10px;
     margin-bottom: 5px;
+    padding: 5px;
+    border-left: 5px solid #D32F2F; /* Rojo Toros */
+    background: rgba(255,255,255,0.05);
 }
 
-/* PUNTUACIONES (CARRERAS) */
+/* PUNTOS - Carreras en rojo */
 .boxpoints {
     width: 25%;
-    background: #D32F2F !important; /* Rojo Toros */
+    background: #D32F2F !important;
     color: white !important;
     font-size: 22px;
     text-align: center;
     border-radius: 4px;
-    font-weight: 700;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
-/* FILA DE DATOS DEL JUEGO (Inning) */
+/* SECCIÓN INNING */
 .containergamedata {
     width: 100%;
     display: flex;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
-    margin: 10px 0;
-    padding: 5px;
+    background: rgba(255,255,255,0.1);
+    margin: 8px 0;
+    border-radius: 5px;
+    padding: 3px;
 }
+.containerinnings { display: flex; align-items: center; gap: 5px; }
+#innings { color: #D32F2F; font-size: 18px; }
 
-.containerinnings {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-#innings { font-size: 20px; color: #D32F2F; }
-.boxinningslabel { font-size: 14px; text-transform: uppercase; opacity: 0.8; }
-
-/* FILA INFERIOR (Bolas, Strikes, Outs y Bases) */
+/* FILA INFERIOR (CUENTA Y BASES) */
 .containerlastrow {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-top: 5px;
 }
@@ -78,50 +66,44 @@ body, html {
 /* CUENTA (Bolas y Strikes) */
 .containerboxstrikes {
     font-size: 16px;
-    background: rgba(0,0,0,0.3);
-    padding: 2px 12px;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
+    color: #aaa;
 }
+#balls, #strikes { color: white; font-weight: bold; }
 
 /* OUTS */
-.containerouts {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-#outs {
-    color: #D32F2F !important;
-    font-size: 18px;
-    font-weight: 700;
+.containerouts { display: flex; align-items: center; gap: 4px; }
+#outs { 
+    background: #D32F2F; 
+    padding: 0 8px; 
+    border-radius: 50%; 
+    font-weight: bold; 
 }
 
 /* DIAMANTE DE BASES */
 .containerbases {
     position: relative;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     transform: rotate(45deg);
 }
-
 .boxbases {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    border: 1.5px solid white;
-    background: transparent;
+    width: 9px;
+    height: 9px;
+    border: 1px solid white;
+    background: rgba(255,255,255,0.1);
 }
 
-/* Bases Ocupadas (Cuando FlexyScore quita la clase boxbasesoff) */
+/* Base llena (Cuando FlexyScore detecta que hay alguien) */
 .boxbases:not(.boxbasesoff) {
     background: #D32F2F !important;
     border-color: #D32F2F !important;
     box-shadow: 0 0 8px #D32F2F;
 }
 
-#b1 { top: 12px; right: 0; }
-#b2 { top: 0; left: 12px; }
-#b3 { top: 12px; left: 0; }
+#b1 { top: 11px; right: 0; }
+#b2 { top: 0; left: 11px; }
+#b3 { top: 11px; left: 0; }
 
-/* Ocultar elementos que no queremos */
-.boxservice, .sgrlogo { display: none !important; }
+/* Ocultar elementos feos o logos no deseados */
+.boxservice, .sgrlogo, .boxinningslabel, .boxoutslabel { opacity: 0.7; font-size: 10px; }
