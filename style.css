@@ -1,71 +1,87 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap');
 
-/* CONTENEDOR PRINCIPAL - Estilo Transparente y Redondeado */
+/* Reset de FlexyScore para quitar el fondo blanco */
+body, html {
+    background: transparent !important;
+}
+
+/* CONTENEDOR PRINCIPAL - Estilo Padres de San Diego */
 .containerbaseball {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
+    background: rgba(15, 15, 15, 0.85) !important; /* Negro transparente */
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
     padding: 15px;
-    width: 400px;
+    width: 380px;
     font-family: 'Oswald', sans-serif;
-    color: white;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-/* EQUIPOS Y PUNTOS (Fila Superior) */
+/* NOMBRES DE EQUIPOS */
 .boxteams {
-    font-size: 1.2rem;
+    width: 65%;
+    font-size: 18px;
     text-transform: uppercase;
-    padding: 5px 10px;
+    padding: 5px 0;
+    font-weight: 700;
+    color: white !important;
+    border-left: 4px solid #D32F2F; /* Rojo Toros */
+    padding-left: 10px;
+    margin-bottom: 5px;
 }
 
-.boxhometeam { color: #ffffff; } /* Toros Blanco */
-.boxawayteam { color: #cccccc; }
-
+/* PUNTUACIONES (CARRERAS) */
 .boxpoints {
-    background: #D32F2F; /* Rojo Toros */
-    color: white;
-    font-size: 1.8rem;
-    padding: 2px 12px;
-    border-radius: 6px;
-    margin: 0 5px;
-    min-width: 40px;
+    width: 25%;
+    background: #D32F2F !important; /* Rojo Toros */
+    color: white !important;
+    font-size: 22px;
     text-align: center;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
-/* FILA DE INNINGS */
+/* FILA DE DATOS DEL JUEGO (Inning) */
 .containergamedata {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
     margin: 10px 0;
-    background: rgba(255,255,255,0.05);
-    border-radius: 8px;
     padding: 5px;
 }
 
-.containerinnings { display: flex; align-items: center; gap: 5px; }
-#innings { color: #D32F2F; font-size: 1.5rem; }
-.boxinningslabel { font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; }
-
-/* FILA INFERIOR (CUENTA, OUTS Y BASES) */
-.containerlastrow {
+.containerinnings {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding-top: 10px;
+    gap: 5px;
 }
 
-/* CUENTA (Balls - Strikes) */
+#innings { font-size: 20px; color: #D32F2F; }
+.boxinningslabel { font-size: 14px; text-transform: uppercase; opacity: 0.8; }
+
+/* FILA INFERIOR (Bolas, Strikes, Outs y Bases) */
+.containerlastrow {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5px;
+}
+
+/* CUENTA (Bolas y Strikes) */
 .containerboxstrikes {
-    background: #333;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 1rem;
+    font-size: 16px;
+    background: rgba(0,0,0,0.3);
+    padding: 2px 12px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* OUTS */
@@ -74,23 +90,18 @@
     align-items: center;
     gap: 5px;
 }
-#outs { 
-    background: #D32F2F; 
-    width: 25px; 
-    height: 25px; 
-    border-radius: 50%; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+#outs {
+    color: #D32F2F !important;
+    font-size: 18px;
+    font-weight: 700;
 }
 
-/* BASES - El Diamante */
+/* DIAMANTE DE BASES */
 .containerbases {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     transform: rotate(45deg);
-    margin-right: 10px;
 }
 
 .boxbases {
@@ -98,20 +109,19 @@
     width: 10px;
     height: 10px;
     border: 1.5px solid white;
-    background: rgba(255,255,255,0.1);
-    transition: all 0.3s;
+    background: transparent;
 }
 
-/* Cuando una base está activa (FlexyScore suele cambiar la clase) */
-.boxbaseson, .boxbasesactive { 
-    background: #D32F2F !important; 
-    border-color: #D32F2F;
+/* Bases Ocupadas (Cuando FlexyScore quita la clase boxbasesoff) */
+.boxbases:not(.boxbasesoff) {
+    background: #D32F2F !important;
+    border-color: #D32F2F !important;
     box-shadow: 0 0 8px #D32F2F;
 }
 
-#b1 { top: 13px; right: 2px; }
-#b2 { top: 2px; left: 13px; }
-#b3 { top: 13px; left: 2px; }
+#b1 { top: 12px; right: 0; }
+#b2 { top: 0; left: 12px; }
+#b3 { top: 12px; left: 0; }
 
-/* OCULTAR ELEMENTOS INNECESARIOS */
-.boxservice, .sgrlogo { display: none; }
+/* Ocultar elementos que no queremos */
+.boxservice, .sgrlogo { display: none !important; }
