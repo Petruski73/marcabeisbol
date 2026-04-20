@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@900&display=swap');
+
+/* FONDO Y CONTENEDOR PRINCIPAL */
+.flexyscore-baseball-wrap {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 12px;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    border-bottom: 4px solid #D32F2F; /* Rojo Toros */
+    width: 400px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* EQUIPOS Y CARRERAS */
+.team-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.team-name {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.team-logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: white; /* Para que resalte el logo */
+    margin-right: 10px;
+}
+
+.score {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #D32F2F;
+    background: white;
+    padding: 0 12px;
+    border-radius: 4px;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* DIAMANTE DE BASES */
+.diamond {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    transform: rotate(45deg);
+}
+
+.base {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+    background: transparent;
+}
+
+.base.occupied {
+    background: #D32F2F !important;
+    border-color: #D32F2F;
+    box-shadow: 0 0 10px #D32F2F;
+}
+
+/* POSICIÓN DE BASES */
+.b1 { top: 0; right: 0; }
+.b2 { top: 0; left: 0; }
+.b3 { bottom: 0; left: 0; }
+
+/* INNING Y OUTS */
+.game-status {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.out-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #444;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+.out-dot.active {
+    background: #FF0000;
+    box-shadow: 0 0 5px red;
+}
